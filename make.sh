@@ -40,7 +40,9 @@ echo "&copy;`date +%Y`&nbsp;${copyright_name}." >> $index_temp
 
 pandoc $index_temp -f markdown -t html -s -o $index_out --shift-heading-level-by=-1
 
-cp ${base_path}/md/media/* ${base_path}/public/pages/media/
+if [ -f ${base_path}/md/media/* ]; then
+    cp ${base_path}/md/media/* ${base_path}/public/pages/media/
+fi
 
 if [ -e $index_temp ]; then
 rm $index_temp
